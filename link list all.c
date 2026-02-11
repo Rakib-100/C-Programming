@@ -57,7 +57,10 @@ void delb()
     free(temp);
 }
 
-void
+void delm(int a)
+{
+
+}
 
 void display()
 {
