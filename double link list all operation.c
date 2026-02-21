@@ -57,6 +57,44 @@ void insl(int a)
 
 }
 
+void delb()
+{
+    if(head==NULL) return;
+
+    ss *temp=head;
+    head=head->next;
+    head->pre=NULL;
+    free(temp);
+}
+
+
+void delm(int id)
+{
+    if(head==NULL) return;
+
+    ss *temp=head;
+    while(temp->next->id!=id)
+    {
+        temp=temp->next;
+    }
+    ss *temp2=temp->next;
+    temp->next=temp->next->next;
+    temp->next->pre=temp;
+    free(temp2);
+}
+
+void dell()
+{   if(head==NULL)return;
+    ss *temp=head;
+    while(temp->next->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    ss *temp2=temp->next;
+    temp->next=NULL;
+    free(temp2);
+
+}
 void display()
 {
     ss *temp=head;
@@ -74,6 +112,12 @@ int main()
     insb(5);
     insm(10,20);
     insl(30);
+    insl(40);
+    insl(50);
+    insl(60);
+    delb();
+    delm(40);
+    dell();
     display();
 }
 
