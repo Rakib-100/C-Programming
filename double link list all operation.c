@@ -17,6 +17,11 @@ void insb(int a)
     nn->id=a;
     nn->pre=NULL;
     nn->next=head;
+    if(head != NULL)
+    {
+       head->pre = nn;
+    }
+
     head=nn;
 
 }
@@ -31,7 +36,10 @@ void insm(int p,int id)
     }
     nn->next=temp->next;
     nn->pre=temp;
-    nn->next->pre=nn;
+    temp->next=nn;
+    if(nn->next!=NULL)
+    {nn->next->pre=nn;}
+
 }
 
 void insl(int a)
@@ -45,6 +53,7 @@ void insl(int a)
         temp=temp->next;
     }
     temp->next=nn;
+    nn->pre=temp;
 
 }
 
