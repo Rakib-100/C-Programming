@@ -38,7 +38,7 @@ void addhostel()
     scanf("%d",&hos->ts);
 
 
-    printf("Enter fillup seat no:\n");
+    printf("Enter free seat no:\n");
     scanf("%d",&hos->fs);
 
 
@@ -58,8 +58,12 @@ void addhostel()
 
     hos->next=NULL;
 
-    if(head==NULL){head=hos;}
-    if(last==NULL){last=hos;}
+    if(head==NULL)
+        {
+            head=hos;
+            last=hos;
+    }
+
     else
         {
             last->next=hos;
@@ -67,8 +71,38 @@ void addhostel()
         }
 }
 
+
+void dishos()
+{
+    H *temp=head;
+    if(temp!=NULL)
+    {
+        while(temp!=NULL)
+        {
+        printf("Hostel name:%s\n",temp->name);
+        printf("Hostel ID:%d\n",temp->hid);
+        printf("contract no:%d\n",temp->mob);
+        printf("Total seat:%d\n",temp->ts);
+        printf("free seat:%d\n",temp->fs);
+        printf("seat fee per month(TK): %d\n",temp->sf);
+        printf("google map distance from daffodil(KM): %d\n",temp->dfd);
+        printf("google map link :\n %s \n",temp->gl);
+        printf("other info:\n %s \n",temp->otinfo);
+        printf("-----------------------------------\n");
+
+        temp=temp->next;
+        }
+        printf("\nPress Enter to continue...");
+        getchar();
+
+    }
+    else{printf("\n**no record found**\n\n");}
+}
+
 int main()
 {
+   int p;
+    do{
     printf("########################################\n");
     printf("#                                      #\n");
     printf("#        WELCOME TO DIU-SAMS           #\n");
@@ -76,14 +110,23 @@ int main()
     printf("########################################\n");
 
 
-    int p;
+
     printf("ALL OPTION:\n\n");
-    printf("1:Add your Hostel.\n\n");
+    printf("1:Add your Hostel.\n");
+    printf("2:display all Hostel info.\n");
+
+
 
     printf("enter your Option no:\n");
     scanf("%d",&p);
     getchar();
-    if(p==1){addhostel();}
+    switch(p)
+    {
+        case 1:addhostel();break;
+        case 2:dishos();break;
+
+    }
+    }while(p!=8);
 
 }
 
