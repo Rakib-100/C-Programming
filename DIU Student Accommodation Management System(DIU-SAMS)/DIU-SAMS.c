@@ -68,8 +68,13 @@ void addhostel()
     printf("Paste google map link of your hostel:\n");
     fgets(hos->gl,sizeof(hos->gl),stdin);
 
+
     printf("give extra info about your hostel:\n");
     fgets(hos->otinfo,sizeof(hos->otinfo),stdin);
+
+    hos->name[strcspn(hos->name, "\n")] = '\0';
+    hos->gl[strcspn(hos->gl, "\n")] = '\0';
+    hos->otinfo[strcspn(hos->otinfo, "\n")] = '\0';
 
     hos->next=NULL;
 
@@ -100,6 +105,7 @@ void dishos()
     {
         while(temp!=NULL)
         {
+        printf("-----------------------------------\n");
         printf("Hostel name:%s\n",temp->name);
         printf("Hostel ID:%d\n",temp->hid);
         printf("contract no:%d\n",temp->mob);
@@ -107,13 +113,14 @@ void dishos()
         printf("free seat:%d\n",temp->fs);
         printf("seat fee per month(TK): %d\n",temp->sf);
         printf("google map distance from daffodil(KM): %d\n",temp->dfd);
-        printf("google map link :\n %s \n",temp->gl);
-        printf("other info:\n %s \n",temp->otinfo);
+        printf("google map link : %s \n",temp->gl);
+        printf("other info: %s \n",temp->otinfo);
         printf("-----------------------------------\n");
 
         temp=temp->next;
         }
         printf("\nPress Enter to continue...");
+        getchar();
         getchar();
 
     }
@@ -221,8 +228,10 @@ void searchHostel()
 
     printf("\nPress Enter to continue...");
     getchar();
-    getchar();
+
 }
+
+
 
 
 
@@ -230,7 +239,48 @@ void searchHostel()
 void loadhostelinfo()
 {
 
+ FILE *fp=fopen("allhos.txt","r");
+ if(fp==NULL){printf("starting fresh\n");}
+ else{printf("Data loded from file\n");}
+ while(1)
+{
 
+
+ H *hos=malloc(sizeof(H));
+ hos->next=NULL;
+ if(fscanf(fp,"%d %d %d %d %d %d\n",&hos->hid,&hos->mob,&hos->ts,&hos->fs,&hos->sf,&hos->dfd)!=6)
+ {
+     free(hos); break;
+
+ }
+ if(fgets(hos->name,sizeof(hos->name),fp)==NULL)
+ {
+     free(hos);break;
+ }
+ if(fgets(hos->gl,sizeof(hos->gl),fp)==NULL)
+ {
+     free(hos);break;
+ }
+ if(fgets(hos->otinfo,sizeof(hos->otinfo),fp)==NULL)
+ {
+     free(hos);break;
+ }
+
+ hos->name[strcspn(hos->name,"\n")] = '\0';
+ hos->gl[strcspn(hos->gl,"\n")] = '\0';
+ hos->otinfo[strcspn(hos->otinfo,"\n")] = '\0';
+
+ if(head==NULL)
+ {
+     head=hos;
+     last=hos;
+ }
+ else
+ {
+     last->next=hos;
+     last=hos;
+ }
+}
 
 }
 
@@ -253,10 +303,94 @@ void  savehostel()
 
 
 
+void updatehostel() {
+    int id;
+    printf("Enter your hostel ID to update:\n");
+    scanf("%d", &id);
+    getchar(); // newline consume
+
+    H *temp = head;
+    int found = 0;
+
+    while (temp != NULL) {
+        if (temp->hid == id) {
+            found = 1;
+            printf("\nHostel Found! Enter new details:\n");
+
+            printf("Enter new Hostel Name:\n");
+            fgets(temp->name, sizeof(temp->name), stdin);
+            temp->name[strcspn(temp->name, "\n")] = '\0';
+
+            printf("Enter new contact no:\n");
+            scanf("%d", &temp->mob);
+
+            printf("Enter new total seat no:\n");
+            scanf("%d", &temp->ts);
+
+            printf("Enter new free seat no:\n");
+            scanf("%d", &temp->fs);
+
+            printf("Enter new seat fee per month:\n");
+            scanf("%d", &temp->sf);
+
+            printf("Enter new google map distance from daffodil (km):\n");
+            scanf("%d", &temp->dfd);
+            getchar(); // newline consume
+
+            printf("Enter new google map link:\n");
+            fgets(temp->gl, sizeof(temp->gl), stdin);
+            temp->gl[strcspn(temp->gl, "\n")] = '\0';
+
+            printf("Enter new extra info:\n");
+            fgets(temp->otinfo, sizeof(temp->otinfo), stdin);
+            temp->otinfo[strcspn(temp->otinfo, "\n")] = '\0';
+
+            printf("\nHostel info updated successfully!\n");
+            break;
+        }
+        temp = temp->next;
+    }
+
+    if (found==0) {
+        printf("Hostel with ID %d not found!\n", id);
+    }
+
+    printf("\nPress Enter to continue...");
+    getchar();
+}
+
+
+
+void deleteAllHostels() {
+    H *temp = head;
+    H *nextNode;
+
+    if (head == NULL) {
+        printf("No hostel records found!\n");
+        return;
+    }
+
+    while (temp != NULL) {
+        nextNode = temp->next;
+        free(temp);
+        temp = nextNode;
+    }
+
+    head = NULL;
+    last = NULL;
+
+    printf("All hostel records deleted successfully!\n");
+    printf("Press Enter to continue...");
+    getchar();
+}
+
+
+
 
 
 int main()
 {
+    loadhostelinfo();
    int p;
     do{
     printf("########################################\n");
@@ -271,8 +405,10 @@ int main()
     printf("1:Add your Hostel.\n");
     printf("2:display all Hostel info.\n");
     printf("3:deleate a Hostel info.\n");
-    printf("4:search hostel by id.\n");
-    printf("8:Exit\n");
+    printf("4:UpdateHostel info.\n");
+    printf("5:search hostel by id.\n");
+    printf("6:deleate all Hostel info.\n");
+    printf("7:Save and Exit\n");
 
 
 
@@ -285,10 +421,12 @@ int main()
         case 1:addhostel();break;
         case 2:dishos();break;
         case 3:deleteHostel();break;
-        case 4:searchHostel();break;
+        case 4:updatehostel();break;
+        case 5:searchHostel();break;
+        case 6:deleteAllHostels();break;
 
     }
-    }while(p!=8);
+    }while(p!=7);
     savehostel();
 
 }
