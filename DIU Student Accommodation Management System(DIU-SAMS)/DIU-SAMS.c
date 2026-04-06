@@ -38,6 +38,7 @@ H *last=NULL;
 void addhostel()
 {
     H *hos=malloc(sizeof(H));
+    hos->next=NULL;
     printf("Enter your Hostel Name:\n");
     fgets(hos->name,sizeof(hos->name),stdin);
 
@@ -121,7 +122,7 @@ void dishos()
         }
         printf("\nPress Enter to continue...");
         getchar();
-        getchar();
+
 
     }
     else{printf("\n**no record found**\n\n");}
@@ -228,6 +229,7 @@ void searchHostel()
 
     printf("\nPress Enter to continue...");
     getchar();
+    getchar();
 
 }
 
@@ -240,7 +242,7 @@ void loadhostelinfo()
 {
 
  FILE *fp=fopen("allhos.txt","r");
- if(fp==NULL){printf("starting fresh\n");}
+ if(fp==NULL){printf("starting fresh\n"); return;}
  else{printf("Data loded from file\n");}
  while(1)
 {
