@@ -2,19 +2,72 @@
 YUNUS KHAN SCHOLARS GARDEN-2
 https://maps.app.goo.gl/SbF5r4EGsUbu8gDV8
 just wow!
-101 404 2550 4000 4000 1
+
+101 404 2550 400 4000 1
 YKSG-2
 DEMO
 WOW 2
+
 103 404 2200 200 4000 0
 RASG-1
 DEMO
 DON't KNOW
+
 104 404 125 12 1200 2
 ABU TALEB HOME
 DEMO
 wow wow
+
 105 404 400 2500 1200 0
 Grap town
 emo
 
+106 405 1800 300 3500 1
+GREEN VALLEY HOSTEL
+https://maps.app.goo.gl/demo1
+Nice environment
+
+107 406 2000 450 3800 0
+CITY BOYS RESIDENCE
+https://maps.app.goo.gl/demo2
+Affordable and clean
+
+108 407 1500 200 3000 1
+SUNRISE HOSTEL
+https://maps.app.goo.gl/demo3
+Good location
+
+109 408 2200 500 4200 2
+MOON LIGHT MESS
+https://maps.app.goo.gl/demo4
+Food quality is great
+
+110 409 1700 350 3600 0
+STUDENT CARE HOME
+https://maps.app.goo.gl/demo5
+Average service
+
+111 410 2500 600 4500 1
+ROYAL HOSTEL
+https://maps.app.goo.gl/demo6
+Premium facilities
+
+112 411 1400 150 2800 2
+BUDGET STAY HOUSE
+https://maps.app.goo.gl/demo7
+Cheap and decent
+
+113 412 1900 300 3700 1
+SMART LIVING HOSTEL
+https://maps.app.goo.gl/demo8
+Modern setup
+
+114 413 2100 400 3900 0
+URBAN NEST
+https://maps.app.goo.gl/demo9
+Comfortable rooms
+
+115 414 1600 250 3200 1
+PEACEFUL HOME
+https://maps.app.goo.gl/demo10
+Quiet place

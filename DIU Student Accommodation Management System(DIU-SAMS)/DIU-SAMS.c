@@ -319,7 +319,7 @@ void updatehostel() {
             found = 1;
             printf("\nHostel Found! Enter new details:\n");
 
-            printf("Enter new Hostel Name:\n");
+           /* printf("Enter new Hostel Name:\n");
             fgets(temp->name, sizeof(temp->name), stdin);
             temp->name[strcspn(temp->name, "\n")] = '\0';
 
@@ -327,7 +327,7 @@ void updatehostel() {
             scanf("%d", &temp->mob);
 
             printf("Enter new total seat no:\n");
-            scanf("%d", &temp->ts);
+            scanf("%d", &temp->ts);*/
 
             printf("Enter new free seat no:\n");
             scanf("%d", &temp->fs);
@@ -335,7 +335,7 @@ void updatehostel() {
             printf("Enter new seat fee per month:\n");
             scanf("%d", &temp->sf);
 
-            printf("Enter new google map distance from daffodil (km):\n");
+            /*printf("Enter new google map distance from daffodil (km):\n");
             scanf("%d", &temp->dfd);
             getchar(); // newline consume
 
@@ -345,7 +345,7 @@ void updatehostel() {
 
             printf("Enter new extra info:\n");
             fgets(temp->otinfo, sizeof(temp->otinfo), stdin);
-            temp->otinfo[strcspn(temp->otinfo, "\n")] = '\0';
+            temp->otinfo[strcspn(temp->otinfo, "\n")] = '\0';*/
 
             printf("\nHostel info updated successfully!\n");
             break;
@@ -357,7 +357,6 @@ void updatehostel() {
         printf("Hostel with ID %d not found!\n", id);
     }
 
-    printf("\nPress Enter to continue...");
     getchar();
 }
 
