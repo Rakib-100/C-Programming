@@ -402,14 +402,18 @@ int main()
 
 
 
-    printf("ALL OPTION:\n\n");
+    printf("OPTION for hostel authority:\n------------------------------------------------------\n");
     printf("1:Add your Hostel.\n");
     printf("2:display all Hostel info.\n");
-    printf("3:deleate a Hostel info.\n");
+    printf("3:delate a Hostel info.\n");
     printf("4:UpdateHostel info.\n");
-    printf("5:search hostel by id.\n");
-    printf("6:deleate all Hostel info.\n");
-    printf("7:Save and Exit\n");
+    printf("5:deleate all Hostel info.\n\n");
+    printf("OPTION for Student:\n------------------------------------------------------\n");
+
+    printf("6:See all hostel info around daffodil\n");
+    printf("7:search hostel by unic hostel id.\n");
+
+    printf("8:Save and Exit\n");
 
 
 
@@ -423,11 +427,12 @@ int main()
         case 2:dishos();break;
         case 3:deleteHostel();break;
         case 4:updatehostel();break;
-        case 5:searchHostel();break;
-        case 6:deleteAllHostels();break;
+        case 5:deleteAllHostels();break;
+        case 6:dishos();break;
+        case 7:searchHostel();break;
 
     }
-    }while(p!=7);
+    }while(p!=8);
     savehostel();
 
 }
